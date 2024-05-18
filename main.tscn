@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://cixpe11nqtmty"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_tgde0"]
+[ext_resource type="PackedScene" uid="uid://v3qif7emlmhm" path="res://Scenes/xr_origin.tscn" id="2_v5hpy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kr13a"]
+size = Vector3(5, 0.1, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1fxtt"]
+size = Vector3(5, 0.1, 5)
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_tgde0")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+shape = SubResource("BoxShape3D_kr13a")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2/CollisionShape3D"]
+mesh = SubResource("BoxMesh_1fxtt")
+
+[node name="test" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.884542, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="test"]
+transform = Transform3D(0.833886, 0, -0.551937, 0, 1, 0, 0.551937, 0, 0.833886, 5.71564, 0, 0)
+shape = SubResource("BoxShape3D_kr13a")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="test/CollisionShape3D"]
+mesh = SubResource("BoxMesh_1fxtt")
+
+[node name="test2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.884542, -10.8135)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="test2"]
+transform = Transform3D(0.683274, 0, -0.730162, 0, 1, 0, 0.730162, 0, 0.683274, 0, 0, 0)
+shape = SubResource("BoxShape3D_kr13a")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="test2/CollisionShape3D"]
+mesh = SubResource("BoxMesh_1fxtt")
+
+[node name="XROrigin3D" parent="." instance=ExtResource("2_v5hpy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
